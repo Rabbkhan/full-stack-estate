@@ -1,32 +1,23 @@
 @use "../../responsive" as *;
 
 nav {
-  height: 100px;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;  // Limits width
+  max-width: 1200px;
   width: 100%;
-  margin: 0 auto; // Centers the navbar
-  padding: 0 20px; // Adds spacing from the sides
-
-  a {
-    transition: all 0.4s ease;
-
-    @include sm {
-      display: none;
-    }
-
-    &:hover {
-      scale: 1.05;
-    }
-  }
+  margin: 0 auto;
+  padding: 0 20px;
+  background-color: white;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1000;
 
   .left {
-    flex: 1; // Allows better spacing
     display: flex;
     align-items: center;
-    gap: 30px; // Reduced gap for better fit
+    gap: 30px;
 
     .logo {
       font-weight: bold;
@@ -34,49 +25,53 @@ nav {
       display: flex;
       align-items: center;
       gap: 10px;
+      text-decoration: none;
+      color: black;
 
       img {
-        width: 28px;
+        width: 30px;
       }
 
       span {
         @include md {
           display: none;
         }
-        @include sm {
-          display: initial;
-        }
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+      font-weight: 500;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: #fece51;
+      }
+
+      @include sm {
+        display: none; // Hide menu links in small screens
       }
     }
   }
 
   .right {
-    flex: 1; // Adjusted for equal spacing
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    height: 100%;
-    
-    @include md {
-      background-color: transparent;
-    }
-
-    a {
-      padding: 10px 20px;
-      margin: 10px;
-    }
+    gap: 20px;
 
     .user {
       display: flex;
       align-items: center;
       font-weight: bold;
+      gap: 10px;
+      position: relative;
 
       img {
-        width: 35px;
-        height: 35px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         object-fit: cover;
-        margin-right: 15px;
       }
 
       span {
@@ -86,11 +81,19 @@ nav {
       }
 
       .profile {
-        padding: 10px 20px;
+        padding: 18px 15px;
         background-color: #fece51;
         cursor: pointer;
-        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        color: black;
+        display: flex;
+        align-items: center;
         position: relative;
+
+        &:hover {
+          background-color:#fece51, 10%;
+        }
 
         .notification {
           position: absolute;
@@ -99,57 +102,64 @@ nav {
           background-color: red;
           color: white;
           border-radius: 50%;
-          width: 20px;
-          height: 20px;
+          width: 18px;
+          height: 18px;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 14px;
+          font-size: 12px;
+          font-weight: bold;
         }
       }
     }
-
-    .register {
-      background-color: #fece51;
+    .closeside{
+      position: relative;
+      top: -100px;
+      font-size: xx-large;
     }
 
     .menuIcon {
       display: none;
-      z-index: 999;
+      cursor: pointer;
 
       img {
         width: 32px;
         height: 32px;
-        cursor: pointer;
       }
 
       @include sm {
-        display: block; // Ensures visibility in mobile view
+        display: block;
       }
     }
 
     .menu {
-      position: absolute;
+      position: fixed;
       top: 0;
       right: -100%;
+      width: 60%;
+      height: 100vh;
       background-color: black;
       color: white;
-      height: 100vh;
-      width: 50%;
-      transition: all 0.4s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      gap: 20px;
+      font-size: 18px;
+      transition: right 0.4s ease-in-out;
 
       &.active {
         right: 0;
       }
 
-      @include sm {
-        a {
-          display: block;
+      a {
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+          color: #fece51;
         }
       }
     }

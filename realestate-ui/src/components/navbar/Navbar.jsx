@@ -47,6 +47,7 @@ function Navbar() {
           />
         </div>
         <div className={open ? "menu active" : "menu"}>
+          <div className="closeside" onClick={() => setOpen(false)}> x</div>
           <a href="/">Home</a>
           <a href="/">About</a>
           <a href="/">Contact</a>
