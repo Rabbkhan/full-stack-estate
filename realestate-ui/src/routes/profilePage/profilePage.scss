@@ -1,0 +1,82 @@
+@use "../../responsive" as *;
+
+.profilePage {
+  display: flex;
+  height: 100vh; // Ensure full-page height
+  min-height: 100vh;
+
+  @include md {
+    flex-direction: column;
+    overflow: auto; // Fix unwanted scrolling
+  }
+
+  .details {
+    flex: 3;
+    overflow-y: auto; // Allow scrolling if needed
+    padding-bottom: 50px;
+
+    @include md {
+      flex: none;
+      height: auto; // Fix height issue
+    }
+
+    .wrapper {
+      padding: 20px; // Better spacing for small screens
+      display: flex;
+      flex-direction: column;
+      gap: 30px; // Reduce gap for better look
+
+      .title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h1 {
+          font-weight: 300;
+        }
+
+        button {
+          padding: 12px 24px;
+          background-color: #fece51;
+          cursor: pointer;
+          border: none;
+        }
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        span {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+        }
+
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  .chatContainer {
+    flex: 2;
+    background-color: #fcf5f3;
+    height: 100%; // Fix height
+
+    @include md {
+      flex: none;
+      height: auto; // Fix height issue
+    }
+
+    .wrapper {
+      padding: 20px; // Better spacing
+      height: 100%;
+    }
+  }
+}
