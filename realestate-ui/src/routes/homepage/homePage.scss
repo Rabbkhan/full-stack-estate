@@ -1,69 +1,58 @@
-@use "../../responsive" as *;
+@import "../../responsive.scss";
 
 .homePage {
   display: flex;
-  height: 100vh;
-  max-width: 1200px; // Set a max-width
-  width: 100%;
-  margin: 0 auto; // Center the page
-  padding: 20px; // Add some spacing
+  height: 100%;
 
   .textContainer {
     flex: 3;
-    display: flex;
-    align-items: center;
-    
+
     .wrapper {
-      padding-right: 80px;
+      padding-right: 100px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 40px;
+      gap: 50px;
       height: 100%;
 
-      @include lg {
-        padding-right: 40px;
+      @include lg{
+        padding-right: 50px;
       }
 
-      @include md {
+      @include md{
         padding: 0;
       }
 
-      @include sm {
+      @include sm{
         justify-content: flex-start;
       }
 
       .title {
-        font-size: 56px; // Slightly reduced for balance
+        font-size: 64px;
 
         @include lg {
-          font-size: 42px;
-        }
-
-        @include md {
-          font-size: 36px;
+          font-size: 48px;
         }
       }
 
       .boxes {
         display: flex;
         justify-content: space-between;
-        gap: 20px;
 
         @include sm {
           display: none;
         }
 
         h1 {
-          font-size: 32px;
+          font-size: 36px;
 
           @include lg {
-            font-size: 28px;
+            font-size: 32px;
           }
         }
 
         h2 {
-          font-size: 18px;
+          font-size: 20px;
           font-weight: 300;
         }
       }
@@ -73,20 +62,22 @@
   .imgContainer {
     flex: 2;
     background-color: #fcf5f3;
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center; // Center image properly
-    position: relative;
-    overflow: hidden; // Prevents image overflow
 
     @include md {
       display: none;
     }
 
     img {
-      width: 90%; // Prevents image from overflowing
-      max-width: 400px; // Limits image size
-      position: relative; // Keeps it within container
+      width: 115%;
+      position: absolute;
+      right: 0;
+
+      @include lg {
+        width: 105%;
+      }
     }
   }
 }

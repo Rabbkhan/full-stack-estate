@@ -1,41 +1,40 @@
-@use "../../responsive" as *;
+@import "../../responsive.scss";
 
 .profilePage {
   display: flex;
-  height: 100vh; // Ensure full-page height
-  min-height: 100vh;
+  height: 100%;
 
-  @include md {
+  @include md{
     flex-direction: column;
-    overflow: auto; // Fix unwanted scrolling
+    overflow: scroll;
   }
 
   .details {
     flex: 3;
-    overflow-y: auto; // Allow scrolling if needed
+    overflow-y: scroll;
     padding-bottom: 50px;
 
-    @include md {
-      flex: none;
-      height: auto; // Fix height issue
+    @include md{
+      flex:none;
+      height: max-content;
     }
 
-    .wrapper {
-      padding: 20px; // Better spacing for small screens
+    .wrapper{
+      padding-right: 50px;
       display: flex;
       flex-direction: column;
-      gap: 30px; // Reduce gap for better look
+      gap: 50px;
 
-      .title {
+      .title{
         display: flex;
         align-items: center;
         justify-content: space-between;
 
-        h1 {
+        h1{
           font-weight: 300;
         }
 
-        button {
+        button{
           padding: 12px 24px;
           background-color: #fece51;
           cursor: pointer;
@@ -43,18 +42,18 @@
         }
       }
 
-      .info {
+      .info{
         display: flex;
         flex-direction: column;
         gap: 20px;
 
-        span {
+        span{
           display: flex;
           align-items: center;
           gap: 20px;
         }
 
-        img {
+        img{
           width: 40px;
           height: 40px;
           border-radius: 50%;
@@ -63,19 +62,18 @@
       }
     }
   }
-
   .chatContainer {
     flex: 2;
     background-color: #fcf5f3;
-    height: 100%; // Fix height
+    height: 100%;
 
-    @include md {
-      flex: none;
-      height: auto; // Fix height issue
+    @include md{
+      flex:none;
+      height: max-content;
     }
 
-    .wrapper {
-      padding: 20px; // Better spacing
+    .wrapper{
+      padding: 0px 20px;
       height: 100%;
     }
   }

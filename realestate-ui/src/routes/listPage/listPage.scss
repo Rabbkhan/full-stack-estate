@@ -2,67 +2,28 @@
 
 .listPage {
   display: flex;
-  height: 100vh; // Make full screen height
-  gap: 20px; // Space between sections
-  padding: 20px; // Add padding for better layout
-  background-color: #f5f5f5; // Light background for contrast
+  height: 100%;
 
   .listContainer {
     flex: 3;
     height: 100%;
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
-    .wrapper {
+    .wrapper{
       height: 100%;
-      padding-right: 15px;
+      padding-right: 50px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      overflow-y: auto;
-      padding-bottom: 20px;
-
-      // Customize scrollbar
-      &::-webkit-scrollbar {
-        width: 6px;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background: #d1d1d1;
-        border-radius: 10px;
-      }
+      gap: 50px;
+      overflow-y: scroll;
+      padding-bottom: 50px;
     }
   }
-
   .mapContainer {
     flex: 2;
     height: 100%;
     background-color: #fcf5f3;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden; // Ensures no extra spacing
 
-    @include md {
-      display: none; // Hide on smaller screens
-    }
-  }
-
-  // Responsive Design
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    gap: 15px;
-    padding: 10px;
-
-    .listContainer {
-      flex: none;
-      width: 100%;
-    }
-
-    .mapContainer {
+    @include md{
       display: none;
     }
   }

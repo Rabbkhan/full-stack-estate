@@ -24,10 +24,10 @@ function App() {
           path:"/list",
           element:<ListPage/>
         },
-        // {
-        //   path:"/:id",
-        //   element:<SinglePage/>
-        // },
+        {
+          path:"/:id",
+          element:<SinglePage/>
+        },
         {
           path:"/profile",
           element:<ProfilePage/>
