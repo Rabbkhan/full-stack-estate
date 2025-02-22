@@ -6,15 +6,15 @@ function Login() {
     <div className="login">
       <div className="formContainer">
         <form>
-          <h1>Welcome back</h1>
-          <input name="username" type="text" placeholder="Username" />
-          <input name="password" type="password" placeholder="Password" />
+          <h1>Welcome Back!</h1>
+          <input name="username" type="text" placeholder="Enter Username" />
+          <input name="password" type="password" placeholder="Enter Password" />
           <button>Login</button>
-          <Link to="/register">{"Don't"} you have an account?</Link>
+          <Link to="/register">Don’t have an account? Sign up</Link>
         </form>
       </div>
       <div className="imgContainer">
-        <img src="/bg.png" alt="" />
+        <img src="/bg.png" alt="Login Illustration" />
       </div>
     </div>
   );
