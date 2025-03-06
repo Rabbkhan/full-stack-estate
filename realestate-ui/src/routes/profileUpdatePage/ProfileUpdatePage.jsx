@@ -11,7 +11,7 @@ function ProfileUpdatePage() {
   const [error, setError] = useState("");
   const { updateUser, currentUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
-const [avatar, setAvatar] = useState(currentUser?.avatar)
+const [avatar, setAvatar] = useState([])
 
 
 
@@ -32,7 +32,7 @@ const [avatar, setAvatar] = useState(currentUser?.avatar)
           username,
           email,
           password,
-          avatar,
+          avatar:avatar[0],
         }
       );
       updateUser(res.data);
@@ -84,7 +84,7 @@ const [avatar, setAvatar] = useState(currentUser?.avatar)
       </div>
       <div className="sideContainer">
         <img
-          src={avatar || "/naovatar.webp"}
+          src={avatar[0] || currentUser.avatar || "/naovatar.webp"}
           alt=""
           className="avatar"
         />
@@ -97,7 +97,7 @@ const [avatar, setAvatar] = useState(currentUser?.avatar)
           folder:'avatars',
         }}
 
-        setAvatar={setAvatar}
+        setState={setAvatar}
         />
       </div>
     </div>

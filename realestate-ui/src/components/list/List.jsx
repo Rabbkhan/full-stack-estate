@@ -1,15 +1,18 @@
-import './list.scss'
-import Card from"../card/Card"
-import {listData} from"../../lib/dummydata"
+import './list.scss';
+import Card from "../card/Card";
+import LoadingSkeleton from '../LoadingSkeleton/LoadingSkeleton';
+function List({ posts, loading }) {
+  if (loading) {
+    return <div className="loading"><LoadingSkeleton/></div>;
+  }
 
-function List(){
   return (
     <div className='list'>
-      {listData.map(item=>(
-        <Card key={item.id} item={item}/>
+      {posts?.map(item => (
+        <Card key={item.id} item={item} />
       ))}
     </div>
-  )
+  );
 }
 
-export default List
+export default List;

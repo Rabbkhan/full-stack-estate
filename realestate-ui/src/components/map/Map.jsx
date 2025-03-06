@@ -9,7 +9,14 @@ const Map = ({items}) => {
 
   return (
     <>
-       <MapContainer center={[52.4797, -1.90269]} zoom={7} scrollWheelZoom={false} className="map">
+<MapContainer 
+  center={items.length === 1 ? [items[0].latitude, items[0].longitude] : [20.5937, 78.9629]} 
+  zoom={5} 
+  scrollWheelZoom={false} 
+  className="map"
+  maxBounds={[[35.5087, 68.1114], [8.0689, 97.3956]]} 
+  maxBoundsViscosity={1.0}
+>
     <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
