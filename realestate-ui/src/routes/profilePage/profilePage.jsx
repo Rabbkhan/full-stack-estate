@@ -72,6 +72,10 @@ function ProfilePage() {
     fetchChat();
   }, []);
 
+
+
+  
+
   return !currentUser ? (
     <Navigate to="/login" />
   ) : (

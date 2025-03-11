@@ -22,8 +22,9 @@ function Filter() {
   };
 
   const handleFilter = () => {
-    setSearchParams(query);
+    setSearchParams({ ...query });
   };
+  
 
   console.log(searchParams.get("city"));
   return (
@@ -76,13 +77,14 @@ function Filter() {
         <div className="item">
           <label htmlFor="minPrice">Min Price</label>
           <input
-            type="number"
-            id="minPrice"
-            name="minPrice"
-            placeholder="any"
-            onChange={handleChange}
-            defaultValue={query.minPrice}
-          />
+  type="number"
+  id="minPrice"
+  name="minPrice"
+  placeholder="any"
+  onChange={handleChange}
+  value={query.minPrice}
+/>
+
         </div>
         <div className="item">
           <label htmlFor="maxPrice">Max Price</label>

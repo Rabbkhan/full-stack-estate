@@ -10,6 +10,7 @@ import NewPostPage from "./routes/newPostPage/NewPostPage";
 import ProfileUpdatePage from "./routes/profileUpdatePage/ProfileUpdatePage";
 import { Toaster } from "react-hot-toast";
 import { listPageLoader, singlePageLoader } from "./lib/loaders";
+import Chat from "./components/chat/Chat";
 
 function App() {
   const router = createBrowserRouter([
@@ -32,7 +33,7 @@ function App() {
           loader: singlePageLoader,
         },
         {
-          path: "/profile",
+          path: "/profile/:userId/chat",
           element: <ProfilePage />,
         },
         {
@@ -43,6 +44,7 @@ function App() {
           path: "/add",
           element: <NewPostPage />,
         },
+
         {
           path: "/login",
           element: <Login />,

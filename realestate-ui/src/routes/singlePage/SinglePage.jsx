@@ -14,23 +14,25 @@ function SinglePage() {
   const { currentUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-console.log(post);
-
+  console.log(post);
 
   const handleSave = async () => {
     if (!currentUser) {
       navigate("/login");
       return;
     }
-  
+
     setSaved((prev) => !prev);
-  
+
     try {
       await apiRequest.post("/users/save", { postId: post.id });
     } catch (error) {
       console.log(error);
       setSaved((prev) => !prev); // Revert UI state
-      alert("Failed to save post: " + error.response?.data?.message || "Unknown error");
+      alert(
+        "Failed to save post: " + error.response?.data?.message ||
+          "Unknown error"
+      );
     }
   };
 
@@ -160,14 +162,13 @@ console.log(post);
               <img src="/chat.png" alt="" />
               Send a Message
             </button>
-             <button
-             onClick={handleSave}
-             style={{ backgroundColor: saved ? "#fece51" : "white" }}
-           >
-             <img src="/save.png" alt="" />
-             {saved ? "place saved" : "Save the Place"}
-           </button>
-           
+            <button
+              onClick={handleSave}
+              style={{ backgroundColor: saved ? "#fece51" : "white" }}
+            >
+              <img src="/save.png" alt="" />
+              {saved ? "place saved" : "Save the Place"}
+            </button>
           </div>
         </div>
       </div>

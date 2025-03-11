@@ -4,27 +4,38 @@ export const getChats = async (req, res) => {
   const tokenUserId = req.userId;
 
   try {
-    const chats = await prisma.Chat.findMany({
+    const chats = await prisma.chat.findMany({
       where: {
         userIDs: {
           hasSome: [tokenUserId],
         },
       },
-      include: {
-        users: {
-          select: {
-            id: true,
-            username: true,
-            avatar: true,
-          },
-        },
-      },
     });
 
-    // Attach the receiver for each chat
+
     for (const chat of chats) {
-      chat.receiver = chat.users.find((user) => user.id !== tokenUserId);
-    }
+      const receiverId = chat.userIDs.find((id) => id !== tokenUserId);
+
+      if (!receiverId) continue; // Skip if no receiverId found
+      
+      const receiver = await prisma.user.findUnique({
+        where: {
+          id: receiverId,
+        },
+        select: {
+          id: true,
+          username: true,
+          avatar: true,
+        },
+      });
+      
+      // console.log("receiver data", receiver);
+      
+        chat.receiver = receiver;
+      }
+      
+    
+    
 
     res.status(200).json(chats);
   } catch (err) {
@@ -32,6 +43,8 @@ export const getChats = async (req, res) => {
     res.status(500).json({ message: "Failed to get chats!" });
   }
 };
+
+
 
 export const getChat = async (req, res) => {
   const tokenUserId = req.userId;
@@ -53,7 +66,7 @@ export const getChat = async (req, res) => {
       },
     });
 
-    await prisma.Chat.update({
+    await prisma.chat.update({
       where: {
         id: req.params.id,
       },
@@ -75,7 +88,7 @@ export const addChat = async (req, res) => {
   const tokenUserId = req.userId;
 
   try {
-    const newChat = await prisma.Chat.create({
+    const newChat = await prisma.chat.create({
       data: {
         userIDs: [tokenUserId, req.body.receiverId],
       },
@@ -92,7 +105,7 @@ export const readChat = async (req, res) => {
   const tokenUserId = req.userId;
 
   try {
-    const chat = await prisma.Chat.update({
+    const chat = await prisma.chat.update({
       where: {
         id: req.params.id,
         userIDs: {

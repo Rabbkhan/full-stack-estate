@@ -6,10 +6,11 @@ const SearchBar = () => {
   const types = ["buy", "rent"];
   const [query, setQuery] = useState({
     type: "buy",
-    location: "",
+    city: "",
     minPrice: 0,
     maxPrice: 0,
   });
+  
 
   const switchType = (val) => {
     setQuery((prev) => ({ ...prev, type: val }));
@@ -34,12 +35,13 @@ const SearchBar = () => {
           ))}
         </div>
         <form>
-          <input
-            type="text"
-            name="city"
-            placeholder="City Location"
-            onChange={handelChange}
-          />
+        <input
+  type="text"
+  name="city"
+  placeholder="City Location"
+  onChange={handelChange}
+/>
+
           <input
             type="number"
             name="minPrice"
@@ -56,9 +58,10 @@ const SearchBar = () => {
             placeholder="Max Price"
             onChange={handelChange}
           />
-          <Link
-            to={`/list?type=${query.type}&city=${query.city}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}`}
-          >
+         <Link
+  to={`/list?type=${query.type}&city=${query.city}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}`}
+>
+
             <button>
               <img src="/search.png" alt="" />
             </button>
